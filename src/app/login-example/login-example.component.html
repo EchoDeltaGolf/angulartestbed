@@ -1,0 +1,23 @@
+User Login Form:
+<form [formGroup]="customForm">
+
+  <input matInput type="email" name="email" placeholder="Email" formControlName="email">
+
+  <input matInput type="password" placeholder="Password" formControlName="password">
+
+  <div class="field-message" *ngIf="password.errors?.['passwordStrength']">
+    Your password must have lower case, upper case and numeric characters.
+  </div>
+
+  <input type="date" placeholder="dateOfDeparture" formControlName="dateEntry">
+
+  <div class="field-message" *ngIf="dateEntry.errors?.['isDatePast']">
+    Your selected date has already passed!
+  </div>
+
+  <button [disabled]="!customForm.valid">
+    Login
+  </button>
+
+
+</form>

@@ -1,0 +1,37 @@
+<p>lorem ipsum dolor sit amet</p>
+<form [formGroup]="travelForm">
+  Goal: <input formControlName="travelName">
+  <br>
+  Place: <input formControlName="travelPlace">
+  <br>
+  <div formArrayName="travelItenerary">
+    <div *ngFor="let itenerary of travelItenerary.controls; let i = index">
+      <div formGroupName="{{ i }}">
+        Itenerary Date: <input type="date" formControlName="iteneraryDate">
+        <br>
+        <div formArrayName="iteneraryActivity">
+          <div *ngFor="let activity of iteneraryActivity(i).controls; let i2 = index">
+            <div formGroupName="{{ i2 }}">
+              Activity Name: <input type="text" formControlName="activityName">
+              Activity Time: <input type="time" formControlName="activityTime">
+              Activity Description: <textarea type="text" formControlName="activityDesc"></textarea>
+            </div>
+          </div>
+          <button (click)="addActivity(i)">Add Activity</button>
+        </div>
+      </div>
+    </div>
+    <br>
+    <button (click)="addItenerary()">Add Itenerary</button>
+  </div>
+  <br>
+
+  <br>
+
+  <br>
+  <br>
+  <button (click)="submitForm()">Submit</button>
+</form>
+<br>
+<!-- <p>{{ iteneraryActivity.length }}</p> -->
+<pre>{{ travelForm.value | json }}</pre>

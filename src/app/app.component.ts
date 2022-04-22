@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AngularTestBed';
+
+  displayCounter(count:number) {
+    console.log(count);
+  }
 }
